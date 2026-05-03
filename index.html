@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="VoteEase – Your complete voter registration and guidance portal"/>
+  <title>VoteEase – Voter Assistance Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+</head>
+<body>
+
+<!-- ── NAVBAR ─────────────────────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+  <div class="nav-brand">
+    <span class="brand-icon">🗳️</span>
+    <span class="brand-name">VoteEase</span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" class="nav-link active" onclick="showSection('home')">Home</a></li>
+    <li><a href="#education" class="nav-link" onclick="showSection('education')">Education</a></li>
+    <li><a href="#parties" class="nav-link" onclick="showSection('parties')">Parties</a></li>
+    <li><a href="#timeline" class="nav-link" onclick="showSection('timeline')">Timeline</a></li>
+    <li><a href="#booth" class="nav-link" onclick="showSection('booth')">Find Booth</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="lang-btn" id="langBtn" onclick="toggleLang()">🌐 हिंदी</button>
+    <button class="voice-btn" id="voiceBtn" onclick="toggleVoice()" title="Voice Assistance">🔊</button>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </div>
+</nav>
+
+<!-- ── HOME SECTION ──────────────────────────────────────────── -->
+<section class="section active" id="home">
+  <div class="hero">
+    <div class="hero-badge">🇮🇳 Official Voter Assistance Portal</div>
+    <h1 class="hero-title" id="heroTitle">Your Vote,<br/><span class="gradient-text">Your Future</span></h1>
+    <p class="hero-sub" id="heroSub">Understand voting laws, know your political parties, find your polling booth, and track elections.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="showSection('education')">📚 Learn Laws</button>
+      <button class="btn-secondary" onclick="showSection('parties')">🏛️ Know Parties</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">900M+</div><div class="stat-lbl">Registered Voters</div></div>
+      <div class="stat"><div class="stat-num">1M+</div><div class="stat-lbl">Polling Booths</div></div>
+      <div class="stat"><div class="stat-num">28</div><div class="stat-lbl">States Covered</div></div>
+    </div>
+  </div>
+
+  <!-- Feature Cards -->
+  <div class="container">
+    <h2 class="section-title" id="featTitle">Our Services</h2>
+    <div class="cards-grid">
+      <div class="card" onclick="showSection('education')">
+        <div class="card-icon">📚</div>
+        <h3>Voting Education</h3>
+        <p>Understand the election process, voting laws, and your rights as a voter.</p>
+        <span class="card-link">Learn More →</span>
+      </div>
+      <div class="card" onclick="showSection('timeline')">
+        <div class="card-icon">📅</div>
+        <h3>Election Timeline</h3>
+        <p>Stay updated with all upcoming elections, dates and phases.</p>
+        <span class="card-link">View Timeline →</span>
+      </div>
+      <div class="card" onclick="showSection('booth')">
+        <div class="card-icon">📍</div>
+        <h3>Booth Locator</h3>
+        <p>Find your nearest polling booth by city or pin code instantly.</p>
+        <span class="card-link">Find Booth →</span>
+      </div>
+      <div class="card" id="chatCardHome" onclick="openChat()">
+        <div class="card-icon">🤖</div>
+        <h3>AI Chatbot</h3>
+        <p>Ask VoteBot any question about voting, laws, or elections.</p>
+        <span class="card-link">Chat Now →</span>
+      </div>
+      <div class="card" onclick="showSection('parties')">
+        <div class="card-icon">🏛️</div>
+        <h3>Political Parties</h3>
+        <p>Learn about different political parties and their mottos.</p>
+        <span class="card-link">Know More →</span>
+      </div>
+      <div class="card" onclick="showNotifModal()">
+        <div class="card-icon">🔔</div>
+        <h3>Notifications</h3>
+        <p>Get SMS/email alerts for election dates and voter deadlines.</p>
+        <span class="card-link">Subscribe →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Helpline Banner -->
+  <div class="helpline-banner">
+    <span class="help-icon">📞</span>
+    <span>National Voter Helpline: <strong>1950</strong> (Toll Free) &nbsp;|&nbsp; Available 24×7</span>
+    <button class="btn-voice-help" onclick="speak('National Voter Helpline number is 1950. It is toll free and available 24 by 7.')">🔊 Read</button>
+  </div>
+</section>
+
+<!-- ── EDUCATION SECTION ──────────────────────────────────────── -->
+<section class="section" id="education">
+  <div class="container">
+    <div class="page-header">
+      <button class="back-btn" onclick="showSection('home')">← Back</button>
+      <h2 class="section-title">📚 Voting Laws & Education</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card" style="cursor: default;">
+        <div class="card-icon">⚖️</div>
+        <h3>Right to Vote</h3>
+        <p>Article 326 of the Constitution grants universal adult suffrage. Every citizen above 18 years has the right to vote, irrespective of caste, religion, or gender.</p>
+      </div>
+      <div class="card" style="cursor: default;">
+        <div class="card-icon">📝</div>
+        <h3>Registration Laws</h3>
+        <p>The Representation of the People Act, 1950, mandates that a person must be an ordinary resident in a constituency to be registered as a voter there.</p>
+      </div>
+      <div class="card" style="cursor: default;">
+        <div class="card-icon">🕵️</div>
+        <h3>Secret Ballot</h3>
+        <p>Voting in India is conducted via Secret Ballot using EVMs (Electronic Voting Machines), ensuring that a voter's choice remains completely private and anonymous.</p>
+      </div>
+      <div class="card" style="cursor: default;">
+        <div class="card-icon">🚫</div>
+        <h3>NOTA</h3>
+        <p>None of the Above (NOTA) allows voters to officially reject all candidates in an election, expressing their dissatisfaction with the available options.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TIMELINE SECTION ──────────────────────────────────────── -->
+<section class="section" id="timeline">
+  <div class="container">
+    <div class="page-header">
+      <button class="back-btn" onclick="showSection('home')">← Back</button>
+      <h2 class="section-title">📅 Election Timeline</h2>
+    </div>
+    <div class="timeline-filter">
+      <button class="filter-btn active" onclick="filterElections('all', this)">All</button>
+      <button class="filter-btn" onclick="filterElections('upcoming', this)">Upcoming</button>
+      <button class="filter-btn" onclick="filterElections('completed', this)">Completed</button>
+    </div>
+    <div class="timeline-list" id="timelineList">
+      <div class="loading-msg">Loading elections...</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BOOTH LOCATOR SECTION ─────────────────────────────────── -->
+<section class="section" id="booth">
+  <div class="container">
+    <div class="page-header">
+      <button class="back-btn" onclick="showSection('home')">← Back</button>
+      <h2 class="section-title">📍 Polling Booth Locator</h2>
+    </div>
+    <div class="search-card">
+      <p class="search-hint">Enter your city and pin code to find nearby polling booths.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>City</label>
+          <input type="text" id="booth_city" placeholder="e.g. Mumbai, Delhi..."/>
+        </div>
+        <div class="form-group">
+          <label>Pin Code</label>
+          <input type="text" id="booth_pin" placeholder="6-digit pin code" maxlength="6"/>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="findBooths()">🔍 Find Booths</button>
+    </div>
+    <div id="boothResults" class="booth-results"></div>
+  </div>
+</section>
+
+<!-- ── PARTIES SECTION ───────────────────────────────────────── -->
+<section class="section" id="parties">
+  <div class="container">
+    <div class="page-header">
+      <button class="back-btn" onclick="showSection('home')">← Back</button>
+      <h2 class="section-title">🏛️ Political Parties & Mottos</h2>
+    </div>
+    <div class="cards-grid">
+      <!-- National Parties -->
+      <h3 style="grid-column: 1 / -1; margin-top: 1rem; margin-bottom: 0.5rem; color: var(--text-dark);">National Parties</h3>
+      
+      <div class="card" style="cursor: default;">
+        <div class="card-icon">🪷</div>
+        <h3>Bharatiya Janata Party (BJP)</h3>
+        <p><strong>Motto/Ideology:</strong> Hindutva, Integral Humanism.</p>
+        <p>Focuses on national security, economic growth, and cultural nationalism.</p>
+      </div>
+      <div class="card" style="cursor: default;">
+        <div class="card-icon">✋</div>
+        <h3>Indian National Congress (INC)</h3>
+        <p><strong>Motto/Ideology:</strong> Secularism, Social Democracy.</p>
+        <p>Emphasizes social welfare, secular values, and inclusive growth.</p>
+      </div>
+      <div class="card" style="cursor: default;">
+        <div class="card-icon">🧹</div>
+        <h3>Aam Aadmi Party (AAP)</h3>
+        <p><strong>Motto/Ideology:</strong> Anti-corruption, Welfarism.</p>
+        <p>Focuses on accessible healthcare, education, and rooting out corruption.</p>
+      </div>
+      <div class="card" style="cursor: default;">
+        <div class="card-icon">🐘</div>
+        <h3>Bahujan Samaj Party (BSP)</h3>
+        <p><strong>Motto/Ideology:</strong> Social Equality, Ambedkarism.</p>
+        <p>Aims to represent marginalized sections of society, including Dalits, Adivasis, and OBCs.</p>
+      </div>
+      <div class="card" style="cursor: default;">
+        <div class="card-icon">🌾</div>
+        <h3>Communist Party of India (M)</h3>
+        <p><strong>Motto/Ideology:</strong> Marxism, Communism.</p>
+        <p>Focuses on workers' rights, land reform, and anti-capitalism.</p>
+      </div>
+    </div>
+    
+    <!-- Regional Parties Section with Sidebar -->
+    <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-dark); border-top: 1px solid var(--border-color); padding-top: 1.5rem;">State-wise Regional Parties</h3>
+    
+    <div class="regional-container">
+      <!-- Sidebar for States -->
+      <div class="state-sidebar">
+        <button class="state-btn active" onclick="showRegionalParties('up', this)">Uttar Pradesh</button>
+        <button class="state-btn" onclick="showRegionalParties('wb', this)">West Bengal</button>
+        <button class="state-btn" onclick="showRegionalParties('tn', this)">Tamil Nadu</button>
+        <button class="state-btn" onclick="showRegionalParties('mh', this)">Maharashtra</button>
+        <button class="state-btn" onclick="showRegionalParties('ap_ts', this)">Andhra & Telangana</button>
+        <button class="state-btn" onclick="showRegionalParties('br', this)">Bihar</button>
+      </div>
+      
+      <!-- Content Area for Parties -->
+      <div class="state-content">
+        <!-- Uttar Pradesh -->
+        <div id="parties-up" class="state-parties-group active">
+          <div class="cards-grid" style="margin-top: 0;">
+            <div class="card" style="cursor: default;">
+              <div class="card-icon">🚲</div>
+              <h3>Samajwadi Party (SP)</h3>
+              <p><strong>Ideology:</strong> Democratic Socialism, Secularism.</p>
+              <p>Focuses on the welfare of farmers and backward classes.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- West Bengal -->
+        <div id="parties-wb" class="state-parties-group">
+          <div class="cards-grid" style="margin-top: 0;">
+            <div class="card" style="cursor: default;">
+              <div class="card-icon">🌿</div>
+              <h3>Trinamool Congress (TMC)</h3>
+              <p><strong>Ideology:</strong> Secularism, Populism.</p>
+              <p>Focuses on grassroots politics and anti-communist stances in Bengal.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tamil Nadu -->
+        <div id="parties-tn" class="state-parties-group">
+          <div class="cards-grid" style="margin-top: 0;">
+            <div class="card" style="cursor: default;">
+              <div class="card-icon">☀️</div>
+              <h3>Dravida Munnetra Kazhagam (DMK)</h3>
+              <p><strong>Ideology:</strong> Social Justice, Dravidianism.</p>
+              <p>Focuses on linguistic pride, state autonomy, and social justice.</p>
+            </div>
+            <div class="card" style="cursor: default;">
+              <div class="card-icon">🍃</div>
+              <h3>AIADMK</h3>
+              <p><strong>Ideology:</strong> Populism, Dravidianism.</p>
+              <p>Emphasizes welfare schemes and state rights.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Maharashtra -->
+        <div id="parties-mh" class="state-parties-group">
+          <div class="cards-grid" style="margin-top: 0;">
+            <div class="card" style="cursor: default;">
+              <div class="card-icon">🏹</div>
+              <h3>Shiv Sena</h3>
+              <p><strong>Ideology:</strong> Hindutva, Marathi Regionalism.</p>
+              <p>Focuses on the rights of the native Marathi people and Hindu nationalism.</p>
+            </div>
+            <div class="card" style="cursor: default;">
+              <div class="card-icon">⏰</div>
+              <h3>Nationalist Congress Party (NCP)</h3>
+              <p><strong>Ideology:</strong> Civic Nationalism, Secularism.</p>
+              <p>Focuses on agricultural issues and rural development in Maharashtra.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Andhra Pradesh & Telangana -->
+        <div id="parties-ap_ts" class="state-parties-group">
+          <div class="cards-grid" style="margin-top: 0;">
+            <div class="card" style="cursor: default;">
+              <div class="card-icon">🚲</div>
+              <h3>Telugu Desam Party (TDP)</h3>
+              <p><strong>State:</strong> Andhra Pradesh</p>
+              <p><strong>Ideology:</strong> Regionalism, Populism.</p>
+              <p>Focuses on the welfare of Telugu people and development.</p>
+            </div>
+            <div class="card" style="cursor: default;">
+              <div class="card-icon">🚗</div>
+              <h3>Bharat Rashtra Samithi (BRS)</h3>
+              <p><strong>State:</strong> Telangana</p>
+              <p><strong>Ideology:</strong> Regionalism, Populism.</p>
+              <p>Led the Telangana statehood movement; focuses on regional development.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bihar -->
+        <div id="parties-br" class="state-parties-group">
+          <div class="cards-grid" style="margin-top: 0;">
+            <div class="card" style="cursor: default;">
+              <div class="card-icon">🏮</div>
+              <h3>Rashtriya Janata Dal (RJD)</h3>
+              <p><strong>Ideology:</strong> Social Justice, Secularism.</p>
+              <p>Focuses on the upliftment of backward castes and minorities in Bihar.</p>
+            </div>
+            <div class="card" style="cursor: default;">
+              <div class="card-icon">🏹</div>
+              <h3>Janata Dal (United) (JDU)</h3>
+              <p><strong>Ideology:</strong> Socialism, Secularism.</p>
+              <p>Emphasizes good governance and social welfare in Bihar.</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NOTIFICATION MODAL ────────────────────────────────────── -->
+<div class="modal-overlay" id="notifModal" onclick="closeNotifModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeNotifModal()">✕</button>
+    <h3>🔔 Subscribe to Notifications</h3>
+    <p>Get alerts for election dates, deadlines & important updates.</p>
+    <div class="form-group"><label>Email Address</label>
+      <input type="email" id="notif_email" placeholder="your@email.com"/>
+    </div>
+    <div class="form-group"><label>Mobile Number</label>
+      <input type="tel" id="notif_phone" placeholder="+91 XXXXXXXXXX"/>
+    </div>
+    <button class="btn-primary" onclick="subscribeNotifications()">Subscribe</button>
+    <div id="notifMsg" class="notif-msg"></div>
+  </div>
+</div>
+
+<!-- ── CHATBOT ────────────────────────────────────────────────── -->
+<div class="chat-fab" id="chatFab" onclick="openChat()" title="Open VoteBot">
+  🤖<span class="chat-badge">1</span>
+</div>
+
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-avatar">🤖</div>
+    <div>
+      <div class="chat-title">VoteBot</div>
+      <div class="chat-status">● Online</div>
+    </div>
+    <button class="chat-close" onclick="closeChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg bot">
+      <div class="msg-bubble">👋 Hi! I'm VoteBot. Ask me anything about voter registration, polling booths, or elections!</div>
+      <div class="msg-time">Now</div>
+    </div>
+  </div>
+  <div class="chat-quick">
+    <button onclick="sendQuick('How do I register?')">Register?</button>
+    <button onclick="sendQuick('Find my booth')">Find Booth</button>
+    <button onclick="sendQuick('Required documents')">Documents</button>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Type your question..." onkeydown="if(event.key==='Enter') sendMessage()"/>
+    <button class="chat-send" onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+<!-- ── VOICE HELPER ───────────────────────────────────────────── -->
+<div class="voice-bar" id="voiceBar" style="display:none">
+  <span>🔊 Voice: <strong id="voiceText">Listening...</strong></span>
+  <button onclick="stopVoice()">✕</button>
+</div>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
