@@ -13,17 +13,45 @@ function showSection(id) {
     target.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  // Update active nav link
-  document.querySelectorAll('.nav-link').forEach(link => {
+  document.querySelectorAll('.nav-links').forEach(link => {
     link.classList.toggle('active', link.getAttribute('href') === '#' + id);
   });
   // Load timeline data when that section is shown
   if (id === 'timeline') loadElections();
+  if (id === 'home') loadNews();
 }
 
 /* ── Mobile Hamburger ────────────────────────────────────── */
 function toggleMenu() {
   document.getElementById('navLinks').classList.toggle('open');
+}
+
+/* ── Live News ───────────────────────────────────────────── */
+async function loadNews() {
+  const container = document.getElementById('newsContainer');
+  if (!container) return;
+
+  try {
+    const res  = await fetch('/api/news');
+    const data = await res.json();
+    const news = data.news || [];
+
+    if (!news.length) {
+      container.innerHTML = '<div class="loading-msg">No news updates at the moment.</div>';
+      return;
+    }
+
+    container.innerHTML = news.map(item => `
+      <div class="news-card">
+        <span class="news-tag ${item.type}">${item.tag}</span>
+        <h3>${item.title}</h3>
+        <p>${item.content}</p>
+        <span class="news-date">🗓️ ${formatDate(item.date)}</span>
+      </div>
+    `).join('');
+  } catch {
+    container.innerHTML = '<div class="loading-msg">⚠️ Failed to load news updates.</div>';
+  }
 }
 
 
@@ -314,6 +342,7 @@ function showRegionalParties(stateId, btn) {
 document.addEventListener('DOMContentLoaded', () => {
   // Show home section on load
   showSection('home');
+  loadNews();
 
   // Enter key on booth input
   document.getElementById('booth_pin').addEventListener('keydown', e => {

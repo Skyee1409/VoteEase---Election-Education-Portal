@@ -230,8 +230,39 @@ def get_elections():
     ]
     return jsonify({'elections': elections})
 
+@app.route('/api/news', methods=['GET'])
+def get_news():
+    news_items = [
+        {
+            'id': 1,
+            'title': 'Voter Counting Tomorrow!',
+            'content': 'The Election Commission has finalized preparations for the counting of votes for Assam, Kerala, Tamil Nadu, West Bengal, and Puducherry assemblies. Results expected by tomorrow evening.',
+            'date': '2026-05-03',
+            'tag': 'Live',
+            'type': 'urgent'
+        },
+        {
+            'id': 2,
+            'title': 'High Voter Turnout in West Bengal',
+            'content': 'The final phase of West Bengal assembly elections saw a massive voter turnout of 82.4%. Polling was largely peaceful across the state.',
+            'date': '2026-04-30',
+            'tag': 'Report',
+            'type': 'info'
+        },
+        {
+            'id': 3,
+            'title': 'Exit Polls Predict Tight Race',
+            'content': 'Initial exit polls for Tamil Nadu and Kerala suggest a neck-and-neck battle between major alliances. Official results on May 4th will clear the air.',
+            'date': '2026-05-02',
+            'tag': 'Analysis',
+            'type': 'info'
+        }
+    ]
+    return jsonify({'news': news_items})
+
 # ─── Auto-create tables on startup ───────────────────────────────────────────
 init_db()
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
